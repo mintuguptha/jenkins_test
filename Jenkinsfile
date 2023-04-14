@@ -4,12 +4,6 @@ pipeline{
 		DOCKERHUB_CREDENTIALS=credentials('mintuguptha-dockerhub')
 	}
 	stages {
-                stage('Initalize') {
-                       steps {
-			        def dockerHome = tool 'mydocker'
-				env.PATH = "${dockerHome}/bin:${env.PATH}"
-                        } 
-                }
 		stage('Build') {
 			steps {
 				sh 'docker build . -f DockerFile -t mintuguptha/flaskapp:v1'
