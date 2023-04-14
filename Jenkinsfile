@@ -6,7 +6,7 @@ pipeline{
 	stages {
 		stage('Build') {
 			steps {
-				sh 'docker build -t mintuguptha/flaskapp:v1 .'
+				sh 'docker build . -f DockerFile -t mintuguptha/flaskapp:v1'
 			}
 		}
 		stage('Login') {
