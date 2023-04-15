@@ -6,7 +6,7 @@ pipeline{
 	stages {
 		stage('Build') {
 			steps {
-				sh 'docker build . -t mintuguptha/flaskapp:v1'
+				sh 'docker build . -t mintuguptha/flaskapp:${BUILD_NUMBER}'
 			}
 		}
 		stage('Login') {
@@ -16,7 +16,7 @@ pipeline{
 		}
 		stage('Push') {
 			steps {
-				sh 'docker push mintuguptha/flaskapp:v1'
+				sh 'docker push mintuguptha/flaskapp:${BUILD_NUMBER}'
 			}
 		}
 	}
