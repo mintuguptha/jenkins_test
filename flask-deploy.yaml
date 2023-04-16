@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: flask-deploy
+  name: flask-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-deploy
+  template:
+    metadata:
+      labels:
+        app: flask-deploy
+    spec:
+      containers:
+      - image: mintuguptha/flaskapp
+        name: flaskapp
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-service
+spec:
+  selector:
+    app: flask-deploy
+  type: NodePort
+  ports:
+    - protocol: TCP
+      targetPort: 5000
+      port: 80
+      nodePort: 30001

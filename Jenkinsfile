@@ -16,9 +16,24 @@ pipeline{
 		}
 		stage('Push') {
 			steps {
-				sh 'docker push mintuguptha/flaskapp:${BUILD_NUMBER}'
+				sh 'docker push mintuguptha/flaskapp:v${BUILD_NUMBER}'
 			}
 		}
+                stage('Deploy to K8s'){
+   			steps{
+    				sshagent(['jenkins_key_kubectl'])
+    		{
+     			sh 'scp -r -o StrictHostKeyChecking=no flask-deploy.yaml master-VirtualBox@192.168.45.209:/path'
+               script{
+      	            try{
+       			sh 'ssh username@102.10.16.23 kubectl apply -f /path/node-deployment.yaml'
+		}catch(error)
+       			{
+		}
+    			 }
+    			}
+   		      }
+ 		    }	
 	}
 	post {
 		always {
