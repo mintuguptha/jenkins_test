@@ -23,7 +23,7 @@ pipeline{
    			steps{
     				sshagent(['jenkins_key_kubectl'])
     		{
-     			sh 'sudo scp -r -o StrictHostKeyChecking=no flask-deploy.yaml master-VirtualBox@192.168.45.209:/path'
+     			sh 'scp -r -o StrictHostKeyChecking=no flask-deploy.yaml master-VirtualBox@192.168.45.209:/path'
                script{
       	            try{
        			sh 'sudo ssh username@102.10.16.23 kubectl apply -f /path/node-deployment.yaml'
