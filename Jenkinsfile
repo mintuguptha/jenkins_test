@@ -21,12 +21,12 @@ pipeline{
 		}
                 stage('Deploy to K8s'){
    			steps{
-    				sshagent(['jenkins_key_kubectl'])
+    				sshagent(['e3810e12-50f9-45a3-9094-9eb6427ecd03'])
     		{
-     			sh 'scp -r -o StrictHostKeyChecking=no flask-deploy.yaml master-VirtualBox@192.168.45.209:/path'
+     			sh 'scp -r -o StrictHostKeyChecking=no flask-deploy.yaml root@192.168.45.209:/path'
                script{
       	            try{
-       			sh 'sudo ssh username@102.10.16.23 kubectl apply -f /path/node-deployment.yaml'
+       			sh 'sudo ssh root@192.168.45.209 kubectl apply -f /path/flask-deploy.yaml'
 		}catch(error)
        			{
 		}
