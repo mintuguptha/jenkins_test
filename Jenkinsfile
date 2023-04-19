@@ -23,10 +23,10 @@ pipeline{
    			steps{
     				sshagent(['k8s-jenkins'])
     		{
-     			sh 'scp -r -o StrictHostKeyChecking=no flask-deploy.yaml master@192.168.45.209:/path'
+     			sh 'scp -r -o StrictHostKeyChecking=no flask-deploy.yaml root@192.168.45.209:/path'
                script{
       	            try{
-       			sh 'sudo ssh master@192.168.45.209 kubectl apply -f /path/flask-deploy.yaml'
+       			sh 'ssh root@192.168.45.209 kubectl apply -f /path/flask-deploy.yaml'
 		}catch(error)
        			{
 		}
