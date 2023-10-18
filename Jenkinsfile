@@ -43,7 +43,7 @@ pipeline {
             steps{
                 sh 'curl -LO "https://dl.k8s.io/release/v1.28.0/bin/linux/amd64/kubectl"'
                 sh 'chmod u+x ./kubectl'
-                sh './kubectl run flask-app --image mintuguptha/flaskrepo:v1 -n jenkins'
+                sh './kubectl apply -f flask-deploy.yaml -n jenkins'
             }
         }
         
