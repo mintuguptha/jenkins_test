@@ -44,7 +44,7 @@ pipeline {
             steps{
                 sh 'curl -LO "https://dl.k8s.io/release/v1.28.0/bin/linux/amd64/kubectl"'
                 sh 'chmod u+x ./kubectl'
-                sh 'kubectl set image deployment/flask-deploy flaskapp=mintuguptha/flaskrepo:v${BUILD_NUMBER} --record'
+                sh 'kubectl set image deployment/flask-deploy flaskapp=mintuguptha/flaskrepo:v${BUILD_NUMBER} -n jenkins --record'
             }
         }
         
