@@ -30,6 +30,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker push mintuguptha/flaskrepo:v${BUILD_NUMBER}'
+                    sh 'docker rmi mintuguptha/flaskrepo:v${BUILD_NUMBER}'
                 }
             }
         }
