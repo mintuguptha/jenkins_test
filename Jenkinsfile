@@ -17,7 +17,7 @@ pipeline {
         stage('Build Docker') {
             steps {
                 script {
-                sh 'docker build . -t mintuguptha/flaskrepo:v1'
+                sh 'docker build . -t mintuguptha/flaskrepo:v${env.BUILD_Number}'
                 }
             }
         }
@@ -29,7 +29,7 @@ pipeline {
         stage('Docker Push') {
             steps {
                 script {
-                    sh 'docker push mintuguptha/flaskrepo:v1'
+                    sh 'docker push mintuguptha/flaskrepo:v${env.BUILD_Number}'
                 }
             }
         }
