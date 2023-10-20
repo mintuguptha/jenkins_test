@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HOST = 'tcp://192.168.59.209:4243'
+        DOCKER_HOST = 'tcp://192.168.184.209:4243'
         DOCKERHUB_CREDENTIALS = credentials('docker-hub-cred')
     }
 
