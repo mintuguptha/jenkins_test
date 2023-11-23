@@ -15,7 +15,7 @@ spec:
         app: flask-deploy
     spec:
       containers:
-      - image: mintuguptha/flaskrepo:v1
+      - image: mintuguptha/flaskrepo:v34
         name: flaskapp
 
 ---
